@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f4f6fb;
+  --foreground: #1b2033;
+  --card: #ffffff;
+  --muted: #e8ecf6;
+  --muted-foreground: #565f7d;
+  --border: #d8def0;
+  --primary: #23306b;
+  --primary-foreground: #ffffff;
+  --accent: #ffc933;
+  --accent-foreground: #1b2033;
+  --danger: #c2293e;
+  --success: #1c7f52;
+  --margin: #e8707f;
+}
+.dark {
+  --background: #0e1322;
+  --foreground: #eef1fa;
+  --card: #161c31;
+  --muted: #1f2742;
+  --muted-foreground: #9aa4c4;
+  --border: #2a3354;
+  --primary: #93a5ff;
+  --primary-foreground: #0e1322;
+  --accent: #ffc933;
+  --accent-foreground: #1b2033;
+  --danger: #ff7b8f;
+  --success: #4cc98b;
+  --margin: #c85a69;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-margin: var(--margin);
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", sans-serif;
+}
+body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+html { scroll-behavior: smooth; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* consistent section heading used on every section */
+.section-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.4rem); line-height: 1.15; color: var(--foreground); }
+.section-sub { color: var(--muted-foreground); max-width: 60ch; line-height: 1.7; }
+
+/* ruled exercise-book paper */
+.ruled {
+  background-color: var(--card);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 39px, var(--border) 39px, var(--border) 40px);
+  position: relative;
+}
+.ruled::before { content: ""; position: absolute; inset: 0 auto 0 clamp(1rem, 6vw, 4.5rem); width: 2px; background: var(--margin); opacity: .55; pointer-events: none; }
+.highlight { background: linear-gradient(transparent 55%, var(--accent) 55%, var(--accent) 92%, transparent 92%); padding: 0 .15em; }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
